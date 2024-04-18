@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class UserUtils
 {
-    private static Random s_random = new Random();
-
     public static T GetRandomValueFromList<T>(List<T> list)
     {
-        int index = s_random.Next(list.Count);
+        int index = Random.Range(0, list.Count);
         return list[index];
     }
 }
