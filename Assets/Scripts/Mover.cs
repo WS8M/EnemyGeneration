@@ -3,21 +3,29 @@ using UnityEngine;
 public class Mover : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed;
-    private Vector3 _direction;
+    private Transform _target;
 
-    public void Init(Vector3 direction)
+    public void Init(Transform target)
     {
-        _direction = direction;
-        transform.LookAt(transform.position + _direction);
+        _target = target;
     }
 
     private void Update()
     {
+        if (_target is null)
+            return;
+        
         Move();
+        Rotate();
     }
 
     private void Move()
     {
-        transform.Translate(_moveSpeed * Time.deltaTime * _direction, Space.World);
+        transform.Translate(_moveSpeed * Time.deltaTime * Vector3.forward);
+    }
+
+    private void Rotate()
+    {
+        transform.LookAt(_target);
     }
 }

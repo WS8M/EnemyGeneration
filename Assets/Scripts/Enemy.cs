@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private Mover _movement;
+    [SerializeField] private Mover _mover;
     
-    public void Init(Vector3 direction)
+    public void Init(Transform targetTransform)
     {
-        _movement.Init(direction);
+        _mover.Init(targetTransform);
     }
 }
